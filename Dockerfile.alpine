@@ -6,7 +6,7 @@
 #   zeronsd:alpine start -s /authtoken.secret -t /token.txt \
 #   <network id>
 
-FROM alpine:latest as builder
+FROM alpine:3.18.5 as builder
 
 RUN apk add gcc
 RUN apk add libgcc
@@ -23,7 +23,7 @@ WORKDIR /zeronsd
 ENV PATH=/root/.cargo/bin:${PATH}
 RUN . /root/.cargo/env && cargo install --path .
 
-FROM alpine:latest
+FROM alpine:3.18.5
 
 RUN apk add openssl ca-certificates libgcc
 
