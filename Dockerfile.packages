@@ -1,4 +1,4 @@
-FROM debian:latest as rustenv
+FROM debian:12.5 as rustenv
 
 RUN apt-get update -qq && DEBIAN_FRONTEND=noninteractive apt-get install curl pkg-config build-essential ca-certificates libc6-dev -y && apt-get autoclean -y && apt-get clean -y
 RUN curl -sSL sh.rustup.rs >/usr/local/bin/rustup-dl && chmod +x /usr/local/bin/rustup-dl && /usr/local/bin/rustup-dl -y --default-toolchain stable
